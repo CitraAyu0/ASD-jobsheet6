@@ -54,4 +54,69 @@ public class DataDosen05 {
             dataDosen05[j] = temp;
         }
     }
+
+    void cariDataSequential(String nama) {
+        boolean ditemukan = false;
+        int jumlahHasil = 0;
+
+        for (int i = 0; i < idx; i++) {
+            if(dataDosen05[i].nama.equalsIgnoreCase(nama)) {
+                dataDosen05[i].tampil();
+                ditemukan = true;
+                jumlahHasil++;
+            }
+        }
+
+        if(!ditemukan) {
+            System.out.println("Data dosen dengan nama" +  nama + " tidak ditemukan");
+        } else if (jumlahHasil > 1) {
+            System.out.println("Ditemukan lebih dari satu dosen dengan nama " + nama + "!");
+        }
+    }
+    
+    void cariDataBinary(int usia) {
+        sortingASC();
+        int left = 0;
+        int right = idx -1;
+        boolean ditemukan = false;
+        int jumlahHasil = 0;
+
+        while (left <= right) {
+            int mid = left + (right-left)/2;
+
+            if (dataDosen05[mid].usia == usia) {
+                int kiri = mid - 1;
+                int kanan = mid + 1;
+
+                dataDosen05[mid].tampil();
+                jumlahHasil++;
+                ditemukan = true;
+
+                while (kiri >= left && dataDosen05[kiri].usia == usia) {
+                    dataDosen05[kiri].tampil();
+                    jumlahHasil++;
+                    kiri--;
+                }
+                while(kanan <= right && dataDosen05[kanan].usia == usia) {
+                    dataDosen05[kanan].tampil();
+                    jumlahHasil++;
+                    kanan++;
+                }
+                break;
+            }
+
+            if (dataDosen05[mid].usia < usia) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }    
+
+        if (!ditemukan) {
+            System.out.println("Data dosen dengan usia " + usia + " tidak ditemukan");
+        } else if (jumlahHasil > 1) {
+            System.out.println("Ditemukan lebih dari satu dosen dengan usia " + usia + "!");
+        }
+        
+    }
 }

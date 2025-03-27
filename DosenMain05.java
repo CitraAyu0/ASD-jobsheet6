@@ -13,8 +13,10 @@ public class DosenMain05 {
             System.out.println("3. Sorting ASC (Bubble Sort)");
             System.out.println("4. Sorting DESC (Selection Sort)");
             System.out.println("5. Sorting DESC (Insertion Sort)");
-            System.out.println("6. Keluar");
-            System.out.print("Pilih menu (1-6): ");
+            System.out.println("6. Cari Data Dosen (Nama) [Sequential Search]");
+            System.out.println("7. Cari Data Dosen (Usia) [Binary Search]");
+            System.out.println("8. Keluar");
+            System.out.print("Pilih menu (1-8): ");
             int pilihan = sc.nextInt();
             sc.nextLine();
 
@@ -64,6 +66,18 @@ public class DosenMain05 {
                     break;
 
                 case 6:
+                    System.out.print("Masukkan nama dosen yang dicari: ");
+                    String namaCari = sc.nextLine();
+                    list.cariDataSequential(namaCari);
+                    break;
+                
+                case 7:
+                    System.out.print("Masukkan usia dosen yang dicari: ");
+                    int usiaCari = sc.nextInt();
+                    list.cariDataBinary(usiaCari);
+                    break;
+
+                case 8:
                     menu = false;
                     System.out.println("Program selesai. Terima kasih!");
                     break;
